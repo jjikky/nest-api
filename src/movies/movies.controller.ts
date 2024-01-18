@@ -4,7 +4,7 @@ import { Movie } from './entities/movie.entity';
 import { CreateMovieDto } from './dto/create-movie.dto.';
 import { UpdateMovieDto } from './dto/update-movie.dto';
 
-@Controller('movies')
+@Controller('/movies')
 export class MoviesController {
 	constructor(private readonly moviesService: MoviesService) {}
 
@@ -33,8 +33,8 @@ export class MoviesController {
 		return this.moviesService.deleteOne(id);
 	}
 
-	@Patch(':/id')
-	path(@Param('id') movieId: number, @Body() updateData: UpdateMovieDto) {
+	@Patch(':id')
+	patch(@Param('id') movieId: number, @Body() updateData: UpdateMovieDto) {
 		return this.moviesService.update(movieId, updateData);
 	}
 }
